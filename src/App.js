@@ -7,10 +7,12 @@ import PopUpPage from "./pages/popup/PopUpPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import CalendarPage from "./pages/calendar/CalendarPage";
 import TablePage from "./pages/table/TablePage";
+import InputPage from "./pages/input/InputPage";
+import FormPage from "./pages/form/FormPage";
 
 const App = () => {
   return (
-    <div>
+    <>
       <Switch>
         <Route path="/register" component={RegisterPage} />
         <Route path="/buttons" component={ButtonPage} />
@@ -19,8 +21,10 @@ const App = () => {
         <Route path="/popup" component={PopUpPage} />
         <Route path="/calendar" component={CalendarPage} />
         <Route path="/table" component={TablePage} />
+        <Route path="/input" component={InputPage} />
+        <Route path="/form" component={FormPage} />
       </Switch>
-    </div>
+    </>
   );
 };
 
