@@ -11,6 +11,10 @@
 //   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 //     monospace;
 // }
+$theme-color--red: #af300b;
+$theme-color--green: #008000;
+$theme-color--blue: #21268a;
+
 * {
   margin: 0;
   padding: 0;
@@ -21,4 +25,15 @@
 }
 .ui.grid {
   margin-top: 0 !important;
+}
+
+.text {
+  &-theme-color {
+    &--red {
+      color: $theme-color--red;
+    }
+    &--green {
+      color: $theme-color--green;
+    }
+  }
 }

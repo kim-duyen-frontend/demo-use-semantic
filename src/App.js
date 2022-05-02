@@ -9,6 +9,7 @@ import CalendarPage from "./pages/calendar/CalendarPage";
 import TablePage from "./pages/table/TablePage";
 import InputPage from "./pages/input/InputPage";
 import FormPage from "./pages/form/FormPage";
+import HomePage from "./pages/modal/HomePage";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/table" component={TablePage} />
         <Route path="/input" component={InputPage} />
         <Route path="/form" component={FormPage} />
+        <Route path="/modal" component={HomePage} />
       </Switch>
     </>
   );
