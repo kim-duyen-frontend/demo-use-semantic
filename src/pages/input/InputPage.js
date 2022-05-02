@@ -1,23 +1,50 @@
 import React, { useState } from "react";
 import { Form, Input, Popup, Icon, Button } from "semantic-ui-react";
 import PasswordInput from "../../components/PasswordInput";
+import InputCheckDuplicate from "../../components/InputCheckDuplicate";
+import axios from "../../utils/axios";
 
+const USERS_LINK = "/users";
 const InputPage = () => {
-  const [info, setInfo] = useState({ userName: "", password: "" });
+  const [info, setInfo] = useState({
+    userName: "",
+    phoneNumber: "",
+    password: "",
+  });
   const [validateInfo, setValidateInfo] = useState({
     min8Chars: false,
     specialChar: false,
     number: false,
     lowerCase: false,
     upperCase: false,
+    name: false,
+    phone: false,
   });
 
   const handleChangeFieldInfo = (name) => (e, data) => {
     setInfo({ ...info, [name]: data.value });
+    if (name === "userName") {
+      handleValidateName(data.value);
+      return;
+    }
     if (name === "password") {
       handleValidatePassword(data.value);
       return;
     }
+    if (name === "phoneNumber") {
+      handleValidatePhoneNumber(data.value);
+      return;
+    }
+  };
+
+  const handleValidateName = (_name = null) => {
+    if (_name.length >= 5) {
+      setValidateInfo({ ...validateInfo, name: _name });
+    }
+  };
+  const handleValidatePhoneNumber = (_phone = null) => {
+    const vnPhoneRegex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+    setValidateInfo({ ...validateInfo, phone: vnPhoneRegex.test(_phone) });
   };
   const handleValidatePassword = (_password = null) => {
     const containNumberReg = /\d/;
@@ -41,8 +68,13 @@ const InputPage = () => {
       return "text-theme-color--red";
     }
   };
-  const handleConfirmCreateAccount = () => {
+  const handleConfirmCreateAccount = (event) => {
+    event.preventDefault();
+    axios
+      .post(USERS_LINK, { ...info, id: new Date().getTime().toString() })
+      .then((res) => console.log(res.data));
     console.log(info);
+    alert("Tạo user thành công");
   };
 
   return (
@@ -52,6 +84,25 @@ const InputPage = () => {
         value={info["userName"]}
         onChange={handleChangeFieldInfo("userName")}
         label="UserName"
+        required
+        error={
+          info.userName && !validateInfo["name"]
+            ? { content: "UserName is invalid", pointing: "above" }
+            : false
+        }
+      />
+      <Form.Field
+        control={InputCheckDuplicate}
+        label="Phone"
+        value={info["phone"]}
+        onChange={handleChangeFieldInfo("phoneNumber")}
+        onBlur={() => handleValidatePhoneNumber(info.phoneNumber)}
+        required
+        error={
+          info.phoneNumber && !validateInfo["phone"]
+            ? { content: "Phone number is invalid", pointing: "above" }
+            : false
+        }
       />
       <Popup
         flowing
@@ -62,6 +113,7 @@ const InputPage = () => {
             onChange={handleChangeFieldInfo("password")}
             label="Password"
             onBlur={() => handleValidatePassword(info.password)}
+            required
           />
         }
         content={

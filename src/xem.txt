@@ -1,0 +1,4 @@
+**Lưu ý:
+không có code backend, dùng json server chạy.
+1.Tạo 1 thư mục server và tạo file .json
+2.Vào thư mục db gõ cmd và tiếp tục gõ trong cmd là json-server --watch db.json --port 4000

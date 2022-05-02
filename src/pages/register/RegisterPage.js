@@ -12,21 +12,21 @@ const RegisterPage = () => {
             <Header.Content>Sign Up</Header.Content>
           </Header>
           <Card fluid>
-            <Card.Content>
-              <Form unstackable>
-                <Form.Group widths={2}>
-                  <Form.Input label="First Name" placeholder="First Name" />
-                  <Form.Input label="Last Name" placeholder="Last Name" />
-                </Form.Group>
-                <Form.Group widths={2}>
-                  <Form.Input label="Country" placeholder="Country" />
-                  <Form.Input label="Phone Number" placeholder="Phone Number" />
-                </Form.Group>
-                <Button fluid primary type="submit">
-                  Create Account
-                </Button>
-              </Form>
-            </Card.Content>
+          <Card.Content>
+          <Form unstackable>
+            <Form.Group widths={2}>
+              <Form.Input label="First Name" placeholder="First Name" />
+              <Form.Input label="Last Name" placeholder="Last Name" />
+            </Form.Group>
+            <Form.Group widths={2}>
+              <Form.Input label="Country" placeholder="Country" />
+              <Form.Input label="Phone Number" placeholder="Phone Number" />
+            </Form.Group>
+            <Button fluid primary type="submit">
+              Create Account
+            </Button>
+          </Form>
+          </Card.Content>
           </Card>
         </Grid.Column>
       </Grid>
