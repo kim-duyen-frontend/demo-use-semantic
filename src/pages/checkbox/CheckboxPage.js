@@ -4,15 +4,17 @@ import { Checkbox, Button } from "semantic-ui-react";
 const CheckboxPage = () => {
   const VersionCheckBox_One = () => {
     const [checked, setChecked] = useState(false);
-    const handleChangeCheckBox = (checked) => {
+    const handleChangeCheckBox = (checked, name) => {
       setChecked(checked); //làm dấu tích sáng lên
       console.log(checked);
+      console.log(name);
     };
     return (
       <div>
         <Checkbox
+          name="box-one"
           label="Check this box 1"
-          onChange={(e, data) => handleChangeCheckBox(data.checked)}
+          onChange={(e, data) => handleChangeCheckBox(data.checked, data.name)}
           checked={checked}
         />
       </div>
