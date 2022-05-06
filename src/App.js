@@ -11,6 +11,7 @@ import InputPage from "./pages/input/InputPage";
 import FormPage from "./pages/form/FormPage";
 import HomePage from "./pages/modal/HomePage";
 import CheckboxPage from "./pages/checkbox/CheckboxPage";
+import Demo from "./pages/checkbox-vs1";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/form" component={FormPage} />
         <Route path="/modal" component={HomePage} />
         <Route path="/checkbox" component={CheckboxPage} />
+        <Route path="/checkboxs" component={Demo}/>
       </Switch>
     </>
   );
